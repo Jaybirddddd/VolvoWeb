@@ -7,6 +7,10 @@ function initModelPage(data) {
       swatches.forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       colorName.textContent = btn.dataset.name;
+      const img = document.querySelector('.model-card img');
+      if (btn.dataset.image && img) {
+        img.src = btn.dataset.image;
+      }
     });
   });
 
@@ -21,3 +25,4 @@ function initModelPage(data) {
     updateTrim();
   }
 }
+
