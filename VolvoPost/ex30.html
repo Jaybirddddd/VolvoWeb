@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volvo EX30 Overview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-tips.html">Quick Tips</a></li>
+        <li><a href="manuals.html">Manuals</a></li>
+      </ul>
+    </nav>
+    <h1>Volvo EX30</h1>
+  </header>
+  <main class="container">
+    <div class="model-card">
+      <img src="images/VolvoXC40.jpg" alt="Volvo EX30 compact electric SUV">
+      <h2>EX30</h2>
+      <p class="model-desc">Compact electric SUV focused on sustainability and advanced connectivity.</p>
+      <label for="trim-select">Choose Trim:</label>
+      <select id="trim-select" class="trim-select">
+        <option value="Plus">Plus</option>
+        <option value="Ultra">Ultra</option>
+      </select>
+      <div id="trim-details"></div>
+      <p>Choose Color:</p>
+      <div class="color-options">
+        <button class="color-swatch" data-color="#003057" data-name="Denim Blue"></button>
+        <button class="color-swatch" data-color="#b7b7b7" data-name="Silver"></button>
+        <button class="color-swatch" data-color="#000000" data-name="Black"></button>
+      </div>
+      <p id="color-name"></p>
+    </div>
+
+    <div id="manual-links">
+      <table class="manual-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Trim</th>
+            <th>Owner's Manual</th>
+            <th>Service Manual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025 EX30</td>
+            <td>All</td>
+            <td><a href="https://www.volvocars.com/en-ca/support/car/ex30/24w17/">View</a></td>
+            <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2025%20FSM%20Maintenance%20Sheets%20Fully%20Electric.pdf">View</a></td>
+          </tr>
+          <tr>
+            <td>2026 EX30</td>
+            <td>All</td>
+            <td><a href="https://www.volvocars.com/en-ca/support/car/ex30/">View</a></td>
+            <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2026%20FSM%20Maintenance%20Sheets%20Fully%20Electric.pdf">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center;font-size:0.9em;">Trim content may vary by model year. Contact your retailer for detailed specifications.</p>
+  </main>
+  <footer>
+    <p>&copy; 2025 Volvo Ownership Experience | EX30</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    initModelPage({
+      trims: {
+        'Plus': 'Google built-in, panoramic roof, Pilot Assist',
+        'Ultra': 'Power seats, Harman Kardon audio, 360\u00b0 camera'
+      }
+    });
+  </script>
+</body>
+</html>
