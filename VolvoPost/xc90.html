@@ -23,16 +23,72 @@
       <img src="images/xc90.webp" alt="Volvo XC90 three-row SUV">
       <h2>XC90</h2>
       <p class="model-desc">Flagship SUV with seating for seven and a choice of mild-hybrid or plug-in power.</p>
-      <ul class="trim-list">
-        <li><strong>Core:</strong> Panoramic roof, Google built-in, seven-seat layout</li>
-        <li><strong>Plus:</strong> Leather seats, Pilot Assist with Adaptive Cruise Control, 360&deg; camera</li>
-        <li><strong>Ultimate:</strong> Nappa leather, crystal shift knob, air suspension</li>
-      </ul>
+      <label for="trim-select">Choose Trim:</label>
+      <select id="trim-select" class="trim-select">
+        <option value="Core">Core</option>
+        <option value="Plus">Plus</option>
+        <option value="Ultimate">Ultimate</option>
+      </select>
+      <div id="trim-details"></div>
+      <p>Choose Color:</p>
+      <div class="color-options">
+        <button class="color-swatch" data-color="#003057" data-name="Denim Blue"></button>
+        <button class="color-swatch" data-color="#b7b7b7" data-name="Silver"></button>
+        <button class="color-swatch" data-color="#000000" data-name="Black"></button>
+      </div>
+      <p id="color-name"></p>
+    </div>
+
+    <div id="manual-links">
+      <table class="manual-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Trim</th>
+            <th>Owner's Manual</th>
+            <th>Service Manual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2">2025 XC90</td>
+            <td>B6/B6</td>
+            <td><a href="https://www.volvocars.com/en-ca/support/car/xc90/24w46/">View</a></td>
+            <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2025%20FSM%20Maintenance%20Sheets%20PHEV%20MHEV.pdf">View</a></td>
+          </tr>
+          <tr>
+            <td>T8</td>
+            <td><a href="https://www.volvocars.com/en-ca/support/car/xc90-plug-in-hybrid/24w46/">View</a></td>
+            <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2025%20FSM%20Maintenance%20Sheets%20PHEV%20MHEV.pdf">View</a></td>
+          </tr>
+          <tr>
+            <td rowspan="2">2026 XC90</td>
+            <td>B5/B6</td>
+            <td><a href="https://www.volvocars.com/en-ca/support/car/xc90/">View</a></td>
+            <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2026%20FSM%20Maintenance%20Sheets%20PHEV%20MHEV.pdf">View</a></td>
+          </tr>
+          <tr>
+            <td>T8</td>
+            <td><a href="https://www.volvocars.com/en-ca/support/car/xc90-plug-in-hybrid/">View</a></td>
+            <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2026%20FSM%20Maintenance%20Sheets%20PHEV%20MHEV.pdf">View</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <p style="text-align:center;font-size:0.9em;">Trim content may vary by model year. Contact your retailer for detailed specifications.</p>
   </main>
   <footer>
     <p>&copy; 2025 Volvo Ownership Experience | XC90</p>
   </footer>
+  <script src="script.js"></script>
+  <script>
+    initModelPage({
+      trims: {
+        'Core': 'Panoramic roof, Google built-in, seven-seat layout',
+        'Plus': 'Leather seats, Pilot Assist with Adaptive Cruise Control, 360° camera',
+        'Ultimate': 'Nappa leather, crystal shift knob, air suspension'
+      }
+    });
+  </script>
 </body>
 </html>
