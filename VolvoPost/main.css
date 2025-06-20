@@ -106,3 +106,50 @@ footer {
   font-size: 0.9em;
   margin-top: 4em;
 }
+
+/* Model & Trim Guide Styles */
+.model-section {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 1.5em;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.model-section details {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0.5em 0;
+}
+
+.model-section details:last-child {
+  border-bottom: none;
+}
+
+.model-section summary {
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 1.5em;
+}
+
+.model-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.model-section summary::after {
+  content: '\25BC';
+  position: absolute;
+  right: 0;
+  transition: transform 0.3s ease;
+}
+
+.model-section details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.model-section ul {
+  margin: 0.5em 0 0 1.5em;
+}
