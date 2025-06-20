@@ -23,15 +23,60 @@
       <img src="images/EX90.webp" alt="Volvo EX90 electric SUV">
       <h2>EX90</h2>
       <p class="model-desc">All-electric SUV introducing Volvo's latest driver-assistance and battery technology.</p>
-      <ul class="trim-list">
-        <li><strong>Plus:</strong> Dual-motor AWD, 14.5" center display, Pilot Assist</li>
-        <li><strong>Ultra:</strong> LiDAR with 360&deg; sensing, Bowers &amp; Wilkins audio, laminated side windows</li>
-      </ul>
+      <label for="trim-select">Choose Trim:</label>
+      <select id="trim-select" class="trim-select">
+        <option value="Plus">Plus</option>
+        <option value="Ultra">Ultra</option>
+      </select>
+      <div id="trim-details"></div>
+      <p>Choose Color:</p>
+      <div class="color-options">
+        <button class="color-swatch" data-color="#003057" data-name="Denim Blue"></button>
+        <button class="color-swatch" data-color="#b7b7b7" data-name="Silver"></button>
+        <button class="color-swatch" data-color="#000000" data-name="Black"></button>
+      </div>
+      <p id="color-name"></p>
+    </div>
+
+    <div id="manual-links">
+      <table class="manual-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Trim</th>
+            <th>Owner's Manual</th>
+            <th>Service Manual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025 EX90</td>
+            <td>All</td>
+            <td><a href="https://www.volvocars.com/en-ca/support/car/ex90/">View</a></td>
+            <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2025%20FSM%20Maintenance%20Sheets%20Fully%20Electric.pdf">View</a></td>
+          </tr>
+          <tr>
+            <td>2026 EX90</td>
+            <td>All</td>
+            <td><a href="#">View</a></td>
+            <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2026%20FSM%20Maintenance%20Sheets%20Fully%20Electric.pdf">View</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <p style="text-align:center;font-size:0.9em;">Trim content may vary by model year. Contact your retailer for detailed specifications.</p>
   </main>
   <footer>
     <p>&copy; 2025 Volvo Ownership Experience | EX90</p>
   </footer>
+  <script src="script.js"></script>
+  <script>
+    initModelPage({
+      trims: {
+        'Plus': 'Dual-motor AWD, 14.5" center display, Pilot Assist',
+        'Ultra': 'LiDAR with 360° sensing, Bowers & Wilkins audio, laminated side windows'
+      }
+    });
+  </script>
 </body>
 </html>
