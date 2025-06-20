@@ -235,3 +235,31 @@ footer {
 .trim-list li {
   margin: 0.2em 0;
 }
+
+/* Manual table styles */
+.manual-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2em;
+}
+.manual-table th, .manual-table td {
+  border: 1px solid #ddd;
+  padding: 0.75em;
+  text-align: left;
+}
+.manual-table th {
+  background-color: var(--primary);
+  color: white;
+}
+.manual-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.manual-table a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.manual-table a:hover {
+  text-decoration: underline;
+}
+
