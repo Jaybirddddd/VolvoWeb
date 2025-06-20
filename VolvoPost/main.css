@@ -1,15 +1,15 @@
-body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #f9f9f9;
+ body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f4f6f8;
         margin: 0;
         padding: 0;
-        color: #222;
+        color: #1a1a1a;
       }
 
       header {
         background-color: #003057;
         color: white;
-        padding: 2em 1em;
+        padding: 3em 1em;
         text-align: center;
       }
 
@@ -18,64 +18,71 @@ body {
       .services {
         margin: 2em auto;
         max-width: 800px;
-        padding: 1em;
+        padding: 1.5em;
         background: white;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         text-align: center;
       }
 
-      .review-link a {
+      .review-link a,
+      .services a {
         display: inline-block;
-        margin-top: 0.5em;
-        padding: 0.6em 1.2em;
+        margin-top: 0.8em;
+        padding: 0.75em 1.5em;
         background-color: #003057;
         color: white;
         text-decoration: none;
         border-radius: 6px;
+        font-weight: 600;
         transition: background 0.3s ease;
       }
 
-      .review-link a:hover {
+      .review-link a:hover,
+      .services a:hover {
         background-color: #001f3f;
       }
 
       h2 {
         text-align: center;
-        margin-top: 2em;
-        font-size: 1.8em;
+        margin-top: 2.5em;
+        font-size: 2em;
+        font-weight: 700;
       }
 
       .vehicle-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        padding: 2em;
+        gap: 32px;
+        padding: 3em;
         max-width: 1200px;
         margin: auto;
       }
 
       .vehicle-item {
         background: white;
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-        padding: 1.5em;
-        text-align: center;
-        transition: transform 0.3s ease;
+        border-radius: 14px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        color: inherit;
       }
 
       .vehicle-item:hover {
         transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
 
       .vehicle-item img {
         width: 100%;
         height: auto;
-        border-radius: 8px;
+        display: block;
       }
 
       .vehicle-item h3 {
-        margin-top: 1em;
+        margin: 1em;
+        font-size: 1.4em;
         font-weight: 600;
       }
 
@@ -83,7 +90,7 @@ body {
         background-color: #003057;
         color: white;
         text-align: center;
-        padding: 1.5em;
+        padding: 2em 1em;
         font-size: 0.9em;
-        margin-top: 3em;
+        margin-top: 4em;
       }
