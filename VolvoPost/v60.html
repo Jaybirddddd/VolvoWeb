@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volvo V60 Overview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-tips.html">Quick Tips</a></li>
+        <li><a href="manuals.html">Manuals</a></li>
+      </ul>
+    </nav>
+    <h1>Volvo V60</h1>
+  </header>
+  <main class="container">
+    <div class="model-card">
+      <img src="images/V90.jpg" alt="Volvo V60 wagon">
+      <h2>V60</h2>
+      <p class="model-desc">Versatile wagon combining cargo space with engaging driving dynamics.</p>
+      <label for="trim-select">Choose Trim:</label>
+      <select id="trim-select" class="trim-select">
+        <option value="Core">Core</option>
+        <option value="Plus">Plus</option>
+      </select>
+      <div id="trim-details"></div>
+      <p>Choose Color:</p>
+      <div class="color-options">
+        <button class="color-swatch" data-color="#003057" data-name="Denim Blue" data-image="https://www.volvocars.com/images/sedan-denim-blue.jpg"></button>
+        <button class="color-swatch" data-color="#b7b7b7" data-name="Silver" data-image="https://www.volvocars.com/images/sedan-silver.jpg"></button>
+        <button class="color-swatch" data-color="#000000" data-name="Black" data-image="https://www.volvocars.com/images/sedan-black.jpg"></button>
+      </div>
+      <p id="color-name"></p>
+      <table class="spec-table">
+        <tr><th>Engine</th><td>2.0L Turbocharged I4</td></tr>
+        <tr><th>Horsepower</th><td>247 hp</td></tr>
+        <tr><th>Torque</th><td>258 lb-ft</td></tr>
+      </table>
+    </div>
+
+    <div id="manual-links">
+      <table class="manual-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Trim</th>
+            <th>Owner's Manual</th>
+            <th>Service Manual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>V60 Core</td>
+            <td>Gas</td>
+            <td><a href="#">View</a></td>
+            <td><a href="#">View</a></td>
+          </tr>
+          <tr>
+            <td>V60 Plus</td>
+            <td>Gas</td>
+            <td><a href="#">View</a></td>
+            <td><a href="#">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="warranty-links">
+      <h3>Warranty Manual</h3>
+      <ul>
+        <li><a href="https://volvornt.harte-hanks.com/manuals/2025/Volvo_Wty_Manual_2025.pdf" target="_blank">2025 Warranty Manual</a></li>
+      </ul>
+    </div>
+    <p style="text-align:center;font-size:0.9em;">Trim content may vary by model year. Contact your retailer for detailed specifications.</p>
+  </main>
+  <footer>
+    <p>&copy; 2025 Volvo Ownership Experience | V60</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    initModelPage({
+      trims: {
+        'Core': 'Power tailgate, digital driver display',
+        'Plus': 'Leather upholstery, premium audio, front park assist'
+      }
+    });
+  </script>
+</body>
+</html>
