@@ -1,15 +1,17 @@
 function initModelPage(data) {
   const swatches = document.querySelectorAll('.color-swatch');
   const colorName = document.getElementById('color-name');
+  let selectedColorImage = null;
   swatches.forEach(btn => {
     btn.style.backgroundColor = btn.dataset.color;
     btn.addEventListener('click', () => {
       swatches.forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       colorName.textContent = btn.dataset.name;
+      selectedColorImage = btn.dataset.image;
       const img = document.querySelector('.model-card img');
-      if (btn.dataset.image && img) {
-        img.src = btn.dataset.image;
+      if (selectedColorImage && img) {
+        img.src = selectedColorImage;
       }
     });
   });
@@ -23,7 +25,7 @@ function initModelPage(data) {
         trimDetails.textContent = data.trims[t] || '';
       }
       const img = document.querySelector('.model-card img');
-      if (data.trimImages && data.trimImages[t] && img) {
+      if (!selectedColorImage && data.trimImages && data.trimImages[t] && img) {
         img.src = data.trimImages[t];
       }
     };
