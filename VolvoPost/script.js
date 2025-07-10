@@ -16,10 +16,16 @@ function initModelPage(data) {
 
   const trimSelect = document.getElementById('trim-select');
   const trimDetails = document.getElementById('trim-details');
-  if (trimSelect && trimDetails && data.trims) {
+  if (trimSelect && trimDetails) {
     const updateTrim = () => {
       const t = trimSelect.value;
-      trimDetails.textContent = data.trims[t] || '';
+      if (data.trims) {
+        trimDetails.textContent = data.trims[t] || '';
+      }
+      const img = document.querySelector('.model-card img');
+      if (data.trimImages && data.trimImages[t] && img) {
+        img.src = data.trimImages[t];
+      }
     };
     trimSelect.addEventListener('change', updateTrim);
     updateTrim();
