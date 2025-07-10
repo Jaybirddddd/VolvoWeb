@@ -1,6 +1,7 @@
 function initModelPage(data) {
   const swatches = document.querySelectorAll('.color-swatch');
   const colorName = document.getElementById('color-name');
+  let selectedColor = null;
   let selectedColorImage = null;
   swatches.forEach(btn => {
     btn.style.backgroundColor = btn.dataset.color;
@@ -8,10 +9,17 @@ function initModelPage(data) {
       swatches.forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       colorName.textContent = btn.dataset.name;
+      selectedColor = btn.dataset.color;
       selectedColorImage = btn.dataset.image;
       const img = document.querySelector('.model-card img');
-      if (selectedColorImage && img) {
-        img.src = selectedColorImage;
+      if (img) {
+        if (data.trimColorImages && selectedTrim &&
+            data.trimColorImages[selectedTrim] &&
+            data.trimColorImages[selectedTrim][selectedColor]) {
+          img.src = data.trimColorImages[selectedTrim][selectedColor];
+        } else if (selectedColorImage) {
+          img.src = selectedColorImage;
+        }
       }
     });
   });
@@ -26,8 +34,16 @@ function initModelPage(data) {
         trimDetails.textContent = data.trims[trim] || '';
       }
       const img = document.querySelector('.model-card img');
-      if (!selectedColorImage && data.trimImages && data.trimImages[trim] && img) {
-        img.src = data.trimImages[trim];
+      if (img) {
+        if (data.trimColorImages && selectedColor &&
+            data.trimColorImages[selectedTrim] &&
+            data.trimColorImages[selectedTrim][selectedColor]) {
+          img.src = data.trimColorImages[selectedTrim][selectedColor];
+        } else if (selectedColorImage) {
+          img.src = selectedColorImage;
+        } else if (data.trimImages && data.trimImages[trim]) {
+          img.src = data.trimImages[trim];
+        }
       }
     };
     trimButtons.forEach(btn => {
