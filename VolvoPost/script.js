@@ -32,3 +32,14 @@ function initModelPage(data) {
   }
 }
 
+function askModelYear() {
+  const year = prompt('Is your Volvo a 2025 or a 2026 model?');
+  if (!year) return;
+  document.querySelectorAll('.year-2025').forEach(el => {
+    el.style.display = year === '2025' ? '' : 'none';
+  });
+  document.querySelectorAll('.year-2026').forEach(el => {
+    el.style.display = year === '2026' ? '' : 'none';
+  });
+}
+

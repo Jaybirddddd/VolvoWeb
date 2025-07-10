@@ -61,13 +61,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="year-2025">
             <td>2025 EX90</td>
             <td>All</td>
             <td><a href="https://www.volvocars.com/en-ca/support/car/ex90/">View</a></td>
             <td><a href="https://volvornt.harte-hanks.com/VolvoVMR/VolvoMediaRepository/Images/FSM%20updated/2025%20FSM%20Maintenance%20Sheets%20Fully%20Electric.pdf">View</a></td>
           </tr>
-          <tr>
+          <tr class="year-2026">
             <td>2026 EX90</td>
             <td>All</td>
             <td><a href="#">View</a></td>
@@ -79,8 +79,8 @@
     <div id="warranty-links">
       <h3>Warranty Manuals</h3>
       <ul>
-        <li><a href="https://volvornt.harte-hanks.com/manuals/2025/Volvo_MY2025_Fully_Elec_Wty_Manual.pdf" target="_blank">2025 EX90 Warranty</a></li>
-        <li><a href="" target="_blank">2026 EX90 Warranty (Not Yet Available)</a></li>
+        <li class="year-2025"><a href="https://volvornt.harte-hanks.com/manuals/2025/Volvo_MY2025_Fully_Elec_Wty_Manual.pdf" target="_blank">2025 EX90 Warranty</a></li>
+        <li class="year-2026"><a href="" target="_blank">2026 EX90 Warranty (Not Yet Available)</a></li>
       </ul>
     </div>
       <div id="accessory-links">
@@ -97,8 +97,8 @@
       </ul>
     </div>
 <div class="catalog-links">
-          <a href="https://usparts.volvocars.com/accessories/Volvo_2025_EX90.html" target="_blank">2025 Full Catalog</a>
-          <a href="https://usparts.volvocars.com/accessories/Volvo_2026_EX90.html" target="_blank">2026 Full Catalog</a>
+          <a class="year-2025" href="https://usparts.volvocars.com/accessories/Volvo_2025_EX90.html" target="_blank">2025 Full Catalog</a>
+          <a class="year-2026" href="https://usparts.volvocars.com/accessories/Volvo_2026_EX90.html" target="_blank">2026 Full Catalog</a>
         </div>
       </div>
     <p style="text-align:center;font-size:0.9em;">Trim content may vary by model year. Contact your retailer for detailed specifications.</p>
@@ -118,6 +118,7 @@
         'Ultra': 'images/ex90-ultra.jpg'
       }
     });
+    askModelYear();
   </script>
 </body>
 </html>
