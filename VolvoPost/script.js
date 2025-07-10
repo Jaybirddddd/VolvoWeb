@@ -16,21 +16,33 @@ function initModelPage(data) {
     });
   });
 
-  const trimSelect = document.getElementById('trim-select');
+  const trimButtons = document.querySelectorAll('.trim-button');
   const trimDetails = document.getElementById('trim-details');
-  if (trimSelect && trimDetails) {
-    const updateTrim = () => {
-      const t = trimSelect.value;
+  let selectedTrim = null;
+  if (trimButtons.length && trimDetails) {
+    const updateTrim = (trim) => {
+      selectedTrim = trim;
       if (data.trims) {
-        trimDetails.textContent = data.trims[t] || '';
+        trimDetails.textContent = data.trims[trim] || '';
       }
       const img = document.querySelector('.model-card img');
-      if (!selectedColorImage && data.trimImages && data.trimImages[t] && img) {
-        img.src = data.trimImages[t];
+      if (!selectedColorImage && data.trimImages && data.trimImages[trim] && img) {
+        img.src = data.trimImages[trim];
       }
     };
-    trimSelect.addEventListener('change', updateTrim);
-    updateTrim();
+    trimButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        trimButtons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        updateTrim(btn.dataset.trim);
+      });
+    });
+    // initialize with first button
+    const first = trimButtons[0];
+    if (first) {
+      first.classList.add('selected');
+      updateTrim(first.dataset.trim);
+    }
   }
 }
 
