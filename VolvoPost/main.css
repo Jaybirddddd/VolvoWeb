@@ -328,6 +328,10 @@ footer {
   box-shadow: 0 0 0 2px var(--accent);
   animation: none;
 }
+.color-options.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 #color-name {
   text-align: center;
   font-size: 0.95em;
