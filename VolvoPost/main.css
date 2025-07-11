@@ -253,6 +253,12 @@ footer {
   display: block;
 }
 
+.wheel-image {
+  width: 150px;
+  margin: 0.5em auto;
+  display: block;
+}
+
 .model-card h2 {
   margin: 0.8em 0 0.4em;
   color: var(--primary);

@@ -2,6 +2,7 @@ function initModelPage(data) {
   const swatches = document.querySelectorAll('.color-swatch');
   const colorName = document.getElementById('color-name');
   const colorOptions = document.querySelector('.color-options');
+  const wheelImg = document.querySelector('.wheel-image');
   let selectedColor = null;
   let selectedColorImage = null;
   let selectedTrim = null;
@@ -29,6 +30,15 @@ function initModelPage(data) {
           img.src = selectedColorImage;
         }
       }
+      if (wheelImg) {
+        if (data.trimWheelColorImages && selectedTrim &&
+            data.trimWheelColorImages[selectedTrim] &&
+            data.trimWheelColorImages[selectedTrim][selectedColor]) {
+          wheelImg.src = data.trimWheelColorImages[selectedTrim][selectedColor];
+        } else if (data.wheelImages && selectedTrim && data.wheelImages[selectedTrim]) {
+          wheelImg.src = data.wheelImages[selectedTrim];
+        }
+      }
     });
   });
 
@@ -49,6 +59,9 @@ function initModelPage(data) {
         if (data.trimImages && data.trimImages[trim]) {
           img.src = data.trimImages[trim];
         }
+      }
+      if (wheelImg && data.wheelImages && data.wheelImages[trim]) {
+        wheelImg.src = data.wheelImages[trim];
       }
     };
     trimButtons.forEach(btn => {
