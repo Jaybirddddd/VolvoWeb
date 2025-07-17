@@ -3,89 +3,72 @@ function initModelPage(data) {
   const colorName = document.getElementById('color-name');
   const colorOptions = document.querySelector('.color-options');
   const wheelImg = document.querySelector('.wheel-image');
-  let selectedColor = null;
-  let selectedColorImage = null;
-  let selectedTrim = null;
+  const trimButtons = document.querySelectorAll('.trim-button');
+  const trimDetails = document.getElementById('trim-details');
+  const modelImg = document.querySelector('.model-card img');
 
-  if (colorOptions) {
-    colorOptions.classList.add('disabled');
+  let selectedTrim = null;
+  let selectedColor = null;
+
+  function updateImage() {
+    if (!modelImg) return;
+
+    if (selectedTrim && selectedColor && data.trimColorImages[selectedTrim]?.[selectedColor]) {
+      modelImg.src = data.trimColorImages[selectedTrim][selectedColor];
+    } else if (selectedTrim && data.trimImages?.[selectedTrim]) {
+      modelImg.src = data.trimImages[selectedTrim];
+    }
   }
 
-  swatches.forEach(btn => {
-    btn.style.backgroundColor = btn.dataset.color;
-    btn.addEventListener('click', () => {
-      if (!selectedTrim) return; // require trim selection first
-      swatches.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      colorName.textContent = btn.dataset.name;
-      selectedColor = btn.dataset.color;
-      selectedColorImage = btn.dataset.image;
-      const img = document.querySelector('.model-card img');
-      if (img) {
-        if (data.trimColorImages && selectedTrim &&
-            data.trimColorImages[selectedTrim] &&
-            data.trimColorImages[selectedTrim][selectedColor]) {
-          img.src = data.trimColorImages[selectedTrim][selectedColor];
-        } else if (selectedColorImage) {
-          img.src = selectedColorImage;
-        }
-      }
-      if (wheelImg) {
-        if (data.trimWheelColorImages && selectedTrim &&
-            data.trimWheelColorImages[selectedTrim] &&
-            data.trimWheelColorImages[selectedTrim][selectedColor]) {
-          wheelImg.src = data.trimWheelColorImages[selectedTrim][selectedColor];
-        } else if (data.wheelImages && selectedTrim && data.wheelImages[selectedTrim]) {
-          wheelImg.src = data.wheelImages[selectedTrim];
-        }
-      }
+  function updateTrim(trim) {
+    selectedTrim = trim;
+    selectedColor = null;
+    swatches.forEach(sw => sw.classList.remove('selected'));
+    colorName.textContent = '';
+
+    // Update trim description
+    if (trimDetails) {
+      trimDetails.textContent = data.trims[trim] || '';
+    }
+
+    updateImage();
+
+    if (colorOptions) {
+      colorOptions.classList.remove('disabled');
+    }
+  }
+
+  function updateColor(color, colorLabel) {
+    selectedColor = color;
+    colorName.textContent = colorLabel;
+
+    swatches.forEach(sw => sw.classList.remove('selected'));
+    this.classList.add('selected');
+
+    updateImage();
+  }
+
+  trimButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      trimButtons.forEach(b => b.classList.remove('selected'));
+      button.classList.add('selected');
+      updateTrim(button.dataset.trim);
     });
   });
 
-  const trimButtons = document.querySelectorAll('.trim-button');
-  const trimDetails = document.getElementById('trim-details');
-  if (trimButtons.length && trimDetails) {
-    const updateTrim = (trim) => {
-      selectedTrim = trim;
-      if (data.trims) {
-        trimDetails.textContent = data.trims[trim] || '';
-      }
-      const img = document.querySelector('.model-card img');
-      if (img) {
-        if (data.trimColorImages && selectedColor &&
-            data.trimColorImages[trim] &&
-            data.trimColorImages[trim][selectedColor]) {
-          img.src = data.trimColorImages[trim][selectedColor];
-        } else if (data.trimImages && data.trimImages[trim]) {
-          img.src = data.trimImages[trim];
-        }
-      }
-      if (wheelImg) {
-        if (data.trimWheelColorImages && selectedColor &&
-            data.trimWheelColorImages[trim] &&
-            data.trimWheelColorImages[trim][selectedColor]) {
-          wheelImg.src = data.trimWheelColorImages[trim][selectedColor];
-        } else if (data.wheelImages && data.wheelImages[trim]) {
-          wheelImg.src = data.wheelImages[trim];
-        }
-      }
-    };
-    trimButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        trimButtons.forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        updateTrim(btn.dataset.trim);
-        if (colorOptions) {
-          colorOptions.classList.remove('disabled');
-        }
-      });
+  swatches.forEach(btn => {
+    btn.style.backgroundColor = btn.dataset.color;
+    btn.addEventListener('click', function() {
+      if (!selectedTrim) return;
+      updateColor.call(this, btn.dataset.color, btn.dataset.name);
     });
-  }
+  });
 }
 
 function askModelYear() {
   const year = prompt('Is your Volvo a 2025 or a 2026 model?');
   if (!year) return;
+
   document.querySelectorAll('.year-2025').forEach(el => {
     el.style.display = year === '2025' ? '' : 'none';
   });
@@ -93,4 +76,3 @@ function askModelYear() {
     el.style.display = year === '2026' ? '' : 'none';
   });
 }
-
