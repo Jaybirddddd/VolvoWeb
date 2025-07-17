@@ -17,6 +17,8 @@ function initModelPage(data) {
       modelImg.src = data.trimColorImages[selectedTrim][selectedColor];
     } else if (selectedTrim && data.trimImages?.[selectedTrim]) {
       modelImg.src = data.trimImages[selectedTrim];
+    } else if (selectedTrim && data.trimImages?.[selectedTrim]) {
+      modelImg.src = data.trimImages[selectedTrim];
     }
   }
 
@@ -26,24 +28,33 @@ function initModelPage(data) {
     swatches.forEach(sw => sw.classList.remove('selected'));
     colorName.textContent = '';
 
-    // Update trim description
     if (trimDetails) {
       trimDetails.textContent = data.trims[trim] || '';
     }
 
-    updateImage();
+    if (modelImg) {
+      if (data.trimImages?.[trim]) {
+        modelImg.src = data.trimImages[trim];
+      } else if (data.trimColorImages?.[trim]) {
+        // default to first color if exists
+        const colors = Object.keys(data.trimColorImages[trim]);
+        if (colors.length > 0) {
+          modelImg.src = data.trimColorImages[trim][colors[0]];
+        }
+      }
+    }
 
     if (colorOptions) {
       colorOptions.classList.remove('disabled');
     }
   }
 
-  function updateColor(color, colorLabel) {
+  function updateColor(color, colorLabel, element) {
     selectedColor = color;
     colorName.textContent = colorLabel;
 
     swatches.forEach(sw => sw.classList.remove('selected'));
-    this.classList.add('selected');
+    element.classList.add('selected');
 
     updateImage();
   }
@@ -60,7 +71,7 @@ function initModelPage(data) {
     btn.style.backgroundColor = btn.dataset.color;
     btn.addEventListener('click', function() {
       if (!selectedTrim) return;
-      updateColor.call(this, btn.dataset.color, btn.dataset.name);
+      updateColor(btn.dataset.color, btn.dataset.name, btn);
     });
   });
 }
