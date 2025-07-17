@@ -25,6 +25,17 @@ function initModelPage(data) {
     }
   }
 
+  function filterSwatchesForTrim(trim) {
+    const available = Object.keys(data.trimColorImages[trim] || {});
+    swatches.forEach(sw => {
+      if (available.includes(sw.dataset.color)) {
+        sw.style.display = '';
+      } else {
+        sw.style.display = 'none';
+      }
+    });
+  }
+
   function updateTrim(trim) {
     selectedTrim = trim;
     selectedColor = null;
@@ -36,7 +47,17 @@ function initModelPage(data) {
       trimDetails.textContent = data.trims[trim] || '';
     }
 
-    updateImage();
+    filterSwatchesForTrim(trim);
+
+    const available = Object.keys(data.trimColorImages[trim] || {});
+    if (available.length > 0) {
+      const firstSwatch = Array.from(swatches).find(sw => sw.dataset.color === available[0]);
+      if (firstSwatch) {
+        updateColor(available[0], firstSwatch.dataset.name, firstSwatch);
+      }
+    } else {
+      updateImage();
+    }
 
     if (colorOptions) {
       colorOptions.classList.remove('disabled');
