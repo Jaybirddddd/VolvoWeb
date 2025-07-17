@@ -47,21 +47,27 @@ function initModelPage(data) {
   if (trimButtons.length && trimDetails) {
     const updateTrim = (trim) => {
       selectedTrim = trim;
-      selectedColor = null;
-      selectedColorImage = null;
-      swatches.forEach(b => b.classList.remove('selected'));
-      colorName.textContent = '';
       if (data.trims) {
         trimDetails.textContent = data.trims[trim] || '';
       }
       const img = document.querySelector('.model-card img');
       if (img) {
-        if (data.trimImages && data.trimImages[trim]) {
+        if (data.trimColorImages && selectedColor &&
+            data.trimColorImages[trim] &&
+            data.trimColorImages[trim][selectedColor]) {
+          img.src = data.trimColorImages[trim][selectedColor];
+        } else if (data.trimImages && data.trimImages[trim]) {
           img.src = data.trimImages[trim];
         }
       }
-      if (wheelImg && data.wheelImages && data.wheelImages[trim]) {
-        wheelImg.src = data.wheelImages[trim];
+      if (wheelImg) {
+        if (data.trimWheelColorImages && selectedColor &&
+            data.trimWheelColorImages[trim] &&
+            data.trimWheelColorImages[trim][selectedColor]) {
+          wheelImg.src = data.trimWheelColorImages[trim][selectedColor];
+        } else if (data.wheelImages && data.wheelImages[trim]) {
+          wheelImg.src = data.wheelImages[trim];
+        }
       }
     };
     trimButtons.forEach(btn => {
