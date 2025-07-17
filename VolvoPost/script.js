@@ -17,14 +17,18 @@ function initModelPage(data) {
       modelImg.src = data.trimColorImages[selectedTrim][selectedColor];
     } else if (selectedTrim && data.trimImages?.[selectedTrim]) {
       modelImg.src = data.trimImages[selectedTrim];
-    } else if (selectedTrim && data.trimImages?.[selectedTrim]) {
-      modelImg.src = data.trimImages[selectedTrim];
+    } else if (selectedTrim && data.trimColorImages[selectedTrim]) {
+      const colors = Object.keys(data.trimColorImages[selectedTrim]);
+      if (colors.length > 0) {
+        modelImg.src = data.trimColorImages[selectedTrim][colors[0]];
+      }
     }
   }
 
   function updateTrim(trim) {
     selectedTrim = trim;
     selectedColor = null;
+
     swatches.forEach(sw => sw.classList.remove('selected'));
     colorName.textContent = '';
 
@@ -32,17 +36,7 @@ function initModelPage(data) {
       trimDetails.textContent = data.trims[trim] || '';
     }
 
-    if (modelImg) {
-      if (data.trimImages?.[trim]) {
-        modelImg.src = data.trimImages[trim];
-      } else if (data.trimColorImages?.[trim]) {
-        // default to first color if exists
-        const colors = Object.keys(data.trimColorImages[trim]);
-        if (colors.length > 0) {
-          modelImg.src = data.trimColorImages[trim][colors[0]];
-        }
-      }
-    }
+    updateImage();
 
     if (colorOptions) {
       colorOptions.classList.remove('disabled');
