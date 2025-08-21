@@ -5,16 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <title>Volvo Post-Sale Ownership</title>
+    <style>
+      .salesperson-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .salesperson-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ccc;
+      }
+    </style>
   </head>
   <body>
     <header class="hero">
       <nav>
         <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="service.html">Need Service?</a></li>
-        <li><a href="manuals.html">Manuals</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="service.html">Need Service?</a></li>
+          <li><a href="manuals.html">Manuals</a></li>
         </ul>
       </nav>
       <h1>Volvo Post-Sale Ownership</h1>
@@ -22,40 +37,97 @@
     </header>
 
     <main class="container">
-    <div class="contact-info">
-      <p><strong>Your Salesperson:</strong> Andy Baculi | 616-475-9534 | abaculi@bettenimports.com</p>
-    </div>
 
-    <div class="review-link">
-      <p>Enjoyed your experience with Andy? Leave a Google review here:</p>
-      <a href="https://g.page/r/CSVxDF3ouOUpEBM/review" target="_blank">Leave Review</a>
-    </div>
+      <!-- Salesperson Dropdown -->
+      <div class="contact-info">
+        <label for="salesperson-select"><strong>Your Salesperson:</strong></label>
+        <select id="salesperson-select">
+          <option value="andy">Andy Baculi</option>
+          <option value="sarah">Sarah Johnson</option>
+          <option value="mike">Mike Thompson</option>
+        </select>
 
-    <div class="services">
-      <p><strong>Need Service?</strong> Schedule online, through the Volvo Cars app, or by phone.</p>
-      <p><strong>Volvo Quick Tips:</strong> <a href="quick-tips.html">Watch our how-to playlist</a></p>
-    </div>
+        <!-- Salesperson details display -->
+        <div id="salesperson-details" class="salesperson-card">
+          <img src="images/andy.jpg" alt="Salesperson Photo">
+          <div>
+            <p><strong>Name:</strong> Andy Baculi</p>
+            <p><strong>Phone:</strong> 616-475-9534</p>
+            <p><strong>Email:</strong> abaculi@bettenimports.com</p>
+          </div>
+        </div>
+      </div>
 
-    <h2>Select Your Volvo Model</h2>
-    <p style="text-align:center">Need details? Choose your model below.</p>
-    <div class="vehicle-grid">
-      <a class="vehicle-item" href="xc-series.html">
-        <img src="images/xc90.avif" alt="Volvo XC90">
-        <h3>XC Series</h3>
-      </a>
-      <a class="vehicle-item" href="ex-series.html">
-        <img src="images/EX90.webp" alt="Volvo EX90">
-        <h3>EX Series</h3>
-      </a>
-      <a class="vehicle-item" href="sv-series.html">
-        <img src="images/v90.avif" alt="Volvo V90">
-        <h3>V &amp; S Series</h3>
-      </a>
-    </div>
+      <div class="review-link">
+        <p>Enjoyed your experience with Andy? Leave a Google review here:</p>
+        <a href="https://g.page/r/CSVxDF3ouOUpEBM/review" target="_blank">Leave Review</a>
+      </div>
+
+      <div class="services">
+        <p><strong>Need Service?</strong> Schedule online, through the Volvo Cars app, or by phone.</p>
+        <p><strong>Volvo Quick Tips:</strong> <a href="quick-tips.html">Watch our how-to playlist</a></p>
+      </div>
+
+      <h2>Select Your Volvo Model</h2>
+      <p style="text-align:center">Need details? Choose your model below.</p>
+      <div class="vehicle-grid">
+        <a class="vehicle-item" href="xc-series.html">
+          <img src="images/xc90.avif" alt="Volvo XC90">
+          <h3>XC Series</h3>
+        </a>
+        <a class="vehicle-item" href="ex-series.html">
+          <img src="images/EX90.webp" alt="Volvo EX90">
+          <h3>EX Series</h3>
+        </a>
+        <a class="vehicle-item" href="sv-series.html">
+          <img src="images/v90.avif" alt="Volvo V90">
+          <h3>V &amp; S Series</h3>
+        </a>
+      </div>
 
     </main>
     <footer>
       <p>&copy; 2025 Volvo Ownership Experience | Designed for Betten Imports</p>
     </footer>
+
+    <script>
+      const salespeople = {
+        andy: {
+          name: "Andy Baculi",
+          phone: "616-475-9534",
+          email: "abaculi@bettenimports.com",
+          photo: "images/andy.jpg"
+        },
+        sarah: {
+          name: "Sarah Johnson",
+          phone: "616-555-1234",
+          email: "sjohnson@bettenimports.com",
+          photo: "images/sarah.jpg"
+        },
+        mike: {
+          name: "Mike Thompson",
+          phone: "616-555-9876",
+          email: "mthompson@bettenimports.com",
+          photo: "images/mike.jpg"
+        }
+      };
+
+      const select = document.getElementById("salesperson-select");
+      const detailsDiv = document.getElementById("salesperson-details");
+
+      function updateSalesperson() {
+        const selected = salespeople[select.value];
+        detailsDiv.innerHTML = `
+          <img src="${selected.photo}" alt="Salesperson Photo">
+          <div>
+            <p><strong>Name:</strong> ${selected.name}</p>
+            <p><strong>Phone:</strong> ${selected.phone}</p>
+            <p><strong>Email:</strong> ${selected.email}</p>
+          </div>
+        `;
+      }
+
+      select.addEventListener("change", updateSalesperson);
+    </script>
   </body>
 </html>
